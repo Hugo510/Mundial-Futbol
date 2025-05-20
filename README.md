@@ -1,6 +1,7 @@
 # Mundial Escolar de Fútbol - Frontend
 
-> **AVISO IMPORTANTE**: Este proyecto ha sido desarrollado con fines académicos como parte del curso de Dispositivos Inteligentes de la Universidad. No está destinado para uso comercial.
+> [!IMPORTANT]
+> Este proyecto ha sido desarrollado con fines académicos como parte del curso de Dispositivos Inteligentes de la Universidad. No está destinado para uso comercial.
 
 Este proyecto es una interfaz web responsiva para el "Comité Organizador de Mundial Escolar de Fútbol". La aplicación está diseñada para proporcionar información y servicios relacionados con un torneo escolar de fútbol, incluyendo programación de partidos, reservación de boletos, resultados en vivo e información general.
 
@@ -124,6 +125,7 @@ La aplicación detecta automáticamente si se está ejecutando en un dispositivo
 
 ## Licencia
 
-Este proyecto está licenciado bajo la Licencia MIT - vea el archivo [LICENSE](./LICENSE) para más detalles.
+> [!NOTE]
+> Este proyecto está licenciado bajo la Licencia MIT - vea el archivo [LICENSE](./LICENSE) para más detalles.
 
 El código se proporciona "tal cual", sin garantía de ningún tipo. Este proyecto es de naturaleza educativa y no está destinado para ser usado en entornos de producción sin revisiones adicionales de seguridad y rendimiento.
