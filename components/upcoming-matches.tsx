@@ -68,15 +68,15 @@ export default function UpcomingMatches({ limit }: UpcomingMatchesProps) {
             <div className="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr]">
               <div className="p-4 md:p-6 flex flex-col justify-center items-center md:items-end">
                 <div className="flex flex-col items-center md:items-end gap-2">
-                  <div className="h-12 w-12 bg-muted rounded-full flex items-center justify-center">
+                  <div className="h-12 w-12 bg-blue-100 rounded-full flex items-center justify-center">
                     <Image src={match.logoA || "/placeholder.svg"} alt={match.teamA} width={30} height={30} />
                   </div>
                   <h3 className="font-semibold text-lg">{match.teamA}</h3>
                 </div>
               </div>
 
-              <div className="bg-muted p-4 flex flex-col items-center justify-center text-center">
-                <Badge variant="outline" className="mb-2">
+              <div className="bg-gradient-to-b from-blue-50 to-purple-50 p-4 flex flex-col items-center justify-center text-center">
+                <Badge variant="outline" className="mb-2 border-purple-300 text-purple-700">
                   {match.stage}
                 </Badge>
                 <div className="text-2xl font-bold mb-2">VS</div>
@@ -92,14 +92,14 @@ export default function UpcomingMatches({ limit }: UpcomingMatchesProps) {
                   <MapPin className="h-4 w-4" />
                   <span>{match.venue}</span>
                 </div>
-                <Button asChild size="sm" className="bg-amber-500 hover:bg-amber-600">
+                <Button asChild size="sm" className="bg-orange-500 hover:bg-orange-600">
                   <Link href={`/reservation?match=${match.id}`}>Reservar</Link>
                 </Button>
               </div>
 
               <div className="p-4 md:p-6 flex flex-col justify-center items-center md:items-start">
                 <div className="flex flex-col items-center md:items-start gap-2">
-                  <div className="h-12 w-12 bg-muted rounded-full flex items-center justify-center">
+                  <div className="h-12 w-12 bg-blue-100 rounded-full flex items-center justify-center">
                     <Image src={match.logoB || "/placeholder.svg"} alt={match.teamB} width={30} height={30} />
                   </div>
                   <h3 className="font-semibold text-lg">{match.teamB}</h3>

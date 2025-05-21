@@ -1,105 +1,85 @@
-import { Clock, Calendar } from "lucide-react"
+import { Clock } from "lucide-react"
 import Image from "next/image"
-import Link from "next/link"
 
 export default function WearableDashboard() {
   // Mock data for next match
   const nextMatch = {
     id: "1",
-    date: "15 Mayo",
     time: "18:00",
-    teamA: "Equipo A",
-    teamB: "Equipo B",
+    teamA: "EQ A",
+    teamB: "EQ B",
     logoA: "/placeholder.svg?height=40&width=40",
     logoB: "/placeholder.svg?height=40&width=40",
-    countdown: "2d 4h 35m",
+    countdown: "2d 4h",
   }
 
   // Mock data for live match
   const liveMatch = {
     id: "2",
-    teamA: "Equipo C",
-    teamB: "Equipo D",
+    teamA: "EQ C",
+    teamB: "EQ D",
     scoreA: 2,
     scoreB: 1,
     minute: "65'",
   }
 
   return (
-    <div className="flex h-full w-full flex-col items-center justify-between p-2">
-      {/* Header */}
-      <div className="mb-1 text-center">
-        <div className="flex items-center justify-center">
-          <div className="h-4 w-4 rounded-full bg-emerald-700"></div>
-          <h1 className="ml-1 text-xs font-bold">Mundial Escolar</h1>
+    <div className="flex h-full w-full flex-col items-center justify-center p-2 bg-gradient-to-b from-blue-900 to-purple-900">
+      {/* Minimalist header - just the title */}
+      <div className="absolute top-1 left-0 right-0 text-center">
+        <h1 className="text-xs font-bold">Mundial</h1>
+      </div>
+
+      {/* Next match - simplified */}
+      <div className="mb-4 text-center">
+        <div className="flex items-center justify-center gap-2">
+          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-blue-800">
+            <Image src={nextMatch.logoA || "/placeholder.svg"} alt={nextMatch.teamA} width={20} height={20} />
+          </div>
+          <div className="flex flex-col">
+            <span className="text-xs font-bold text-pink-400">{nextMatch.countdown}</span>
+            <span className="text-[10px]">{nextMatch.time}</span>
+          </div>
+          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-blue-800">
+            <Image src={nextMatch.logoB || "/placeholder.svg"} alt={nextMatch.teamB} width={20} height={20} />
+          </div>
         </div>
       </div>
 
-      {/* Next match countdown */}
-      <div className="mb-2 w-full">
-        <h2 className="mb-1 text-center text-[10px] font-medium text-emerald-400">PRÓXIMO PARTIDO</h2>
-        <div className="flex items-center justify-center gap-1 text-center">
-          <div className="flex h-6 w-6 items-center justify-center rounded-full bg-emerald-900">
-            <Image src={nextMatch.logoA || "/placeholder.svg"} alt={nextMatch.teamA} width={16} height={16} />
-          </div>
-          <span className="text-xs font-bold">VS</span>
-          <div className="flex h-6 w-6 items-center justify-center rounded-full bg-emerald-900">
-            <Image src={nextMatch.logoB || "/placeholder.svg"} alt={nextMatch.teamB} width={16} height={16} />
-          </div>
-        </div>
-        <div className="mt-1 flex items-center justify-center gap-2 text-[10px]">
-          <div className="flex items-center">
-            <Calendar className="mr-0.5 h-3 w-3 text-emerald-400" />
-            <span>{nextMatch.date}</span>
-          </div>
-          <div className="flex items-center">
-            <Clock className="mr-0.5 h-3 w-3 text-emerald-400" />
-            <span>{nextMatch.time}</span>
-          </div>
-        </div>
-        <div className="mt-1 text-center text-xs font-bold text-amber-500">{nextMatch.countdown}</div>
-      </div>
-
-      {/* Live score ticker */}
+      {/* Live score - simplified */}
       {liveMatch ? (
-        <div className="mb-2 w-full rounded-lg bg-emerald-900 p-2">
+        <div className="w-full rounded-lg bg-blue-800 p-2">
           <div className="mb-1 flex items-center justify-center">
-            <span className="mr-1 rounded bg-amber-500 px-1 py-0.5 text-[8px] font-bold text-black">EN VIVO</span>
-            <span className="text-[8px]">{liveMatch.minute}</span>
+            <span className="rounded bg-pink-500 px-1 py-0.5 text-[8px] font-bold text-white">LIVE</span>
+            <span className="ml-1 text-[8px]">{liveMatch.minute}</span>
           </div>
-          <div className="flex items-center justify-center gap-2">
-            <div className="text-center">
-              <div className="mb-1 h-5 w-5 rounded-full bg-emerald-800 p-1">
-                <Image src="/placeholder.svg?height=20&width=20" alt={liveMatch.teamA} width={16} height={16} />
-              </div>
+          <div className="flex items-center justify-center">
+            <div className="text-center w-8">
               <span className="text-[10px]">{liveMatch.teamA}</span>
             </div>
-            <div className="flex gap-1 text-center">
-              <span className="text-lg font-bold">{liveMatch.scoreA}</span>
-              <span className="text-lg font-bold">-</span>
-              <span className="text-lg font-bold">{liveMatch.scoreB}</span>
+            <div className="flex gap-1 mx-2 text-center">
+              <span className="text-xl font-bold">{liveMatch.scoreA}</span>
+              <span className="text-xl font-bold">-</span>
+              <span className="text-xl font-bold">{liveMatch.scoreB}</span>
             </div>
-            <div className="text-center">
-              <div className="mb-1 h-5 w-5 rounded-full bg-emerald-800 p-1">
-                <Image src="/placeholder.svg?height=20&width=20" alt={liveMatch.teamB} width={16} height={16} />
-              </div>
+            <div className="text-center w-8">
               <span className="text-[10px]">{liveMatch.teamB}</span>
             </div>
           </div>
         </div>
       ) : (
-        <div className="mb-2 w-full rounded-lg bg-emerald-900 p-2 text-center">
+        <div className="w-full rounded-lg bg-blue-800 p-2 text-center">
           <p className="text-[10px]">No hay partidos en vivo</p>
         </div>
       )}
 
-      {/* Quick action button */}
-      <Link
-        href="/reservation"
-        className="mb-1 w-full rounded-lg bg-amber-500 py-2 text-center text-xs font-bold text-black"
-      >
-        RESERVAR LUGAR
-      </Link>
+      {/* Time indicator at the bottom */}
+      <div className="absolute bottom-1 left-0 right-0 flex items-center justify-center">
+        <Clock className="h-3 w-3 text-blue-300 mr-1" />
+        <span className="text-[8px] text-blue-300">
+          {new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
+        </span>
+      </div>
     </div>
   )
 }

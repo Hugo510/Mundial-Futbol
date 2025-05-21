@@ -34,8 +34,8 @@ export default function Navigation() {
               <SheetContent side="left">
                 <div className="grid gap-6 py-6">
                   <Link href="/" className="flex items-center gap-2" onClick={() => setIsOpen(false)}>
-                    <div className="h-8 w-8 bg-emerald-100 rounded-full flex items-center justify-center">
-                      <div className="h-5 w-5 bg-emerald-700 rounded-full" />
+                    <div className="h-8 w-8 bg-blue-100 rounded-full flex items-center justify-center">
+                      <div className="h-5 w-5 bg-blue-600 rounded-full" />
                     </div>
                     <span className="font-semibold">Mundial Escolar</span>
                   </Link>
@@ -46,7 +46,7 @@ export default function Navigation() {
                         href={item.href}
                         className={cn(
                           "flex items-center gap-3 px-3 py-2 rounded-md text-sm font-medium",
-                          pathname === item.href ? "bg-emerald-100 text-emerald-900" : "hover:bg-muted",
+                          pathname === item.href ? "bg-blue-100 text-blue-900" : "hover:bg-muted",
                         )}
                         onClick={() => setIsOpen(false)}
                       >
@@ -56,7 +56,7 @@ export default function Navigation() {
                     ))}
                   </nav>
                   <div className="grid gap-2">
-                    <Button asChild className="bg-emerald-700 hover:bg-emerald-800">
+                    <Button asChild className="bg-blue-600 hover:bg-blue-700">
                       <Link href="/reservation" onClick={() => setIsOpen(false)}>
                         Reservar Lugar
                       </Link>
@@ -73,8 +73,8 @@ export default function Navigation() {
           </div>
 
           <Link href="/" className="flex items-center gap-2">
-            <div className="h-8 w-8 bg-emerald-100 rounded-full flex items-center justify-center">
-              <div className="h-5 w-5 bg-emerald-700 rounded-full" />
+            <div className="h-8 w-8 bg-blue-100 rounded-full flex items-center justify-center">
+              <div className="h-5 w-5 bg-blue-600 rounded-full" />
             </div>
             <span className="font-semibold hidden md:inline-block">Mundial Escolar</span>
           </Link>
@@ -86,7 +86,7 @@ export default function Navigation() {
                 href={item.href}
                 className={cn(
                   "flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium transition-colors",
-                  pathname === item.href ? "bg-emerald-100 text-emerald-900" : "hover:bg-muted",
+                  pathname === item.href ? "bg-blue-100 text-blue-900" : "hover:bg-muted",
                 )}
               >
                 {item.icon}
@@ -96,7 +96,7 @@ export default function Navigation() {
           </nav>
 
           <div className="hidden md:flex items-center gap-3">
-            <Button asChild size="sm" className="bg-emerald-700 hover:bg-emerald-800">
+            <Button asChild size="sm" className="bg-blue-600 hover:bg-blue-700">
               <Link href="/reservation">Reservar Lugar</Link>
             </Button>
           </div>

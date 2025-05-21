@@ -1,17 +1,13 @@
 import Link from "next/link"
-import { Calendar, Info, MapPin, Trophy } from "lucide-react"
+import { Calendar, Trophy, Info } from "lucide-react"
 
 export default function WearableMore() {
+  // Simplified menu items - only the most important
   const menuItems = [
     {
       icon: <Calendar className="h-4 w-4" />,
       label: "Calendario",
       href: "/schedule",
-    },
-    {
-      icon: <MapPin className="h-4 w-4" />,
-      label: "Reservaciones",
-      href: "/reservation",
     },
     {
       icon: <Trophy className="h-4 w-4" />,
@@ -20,22 +16,27 @@ export default function WearableMore() {
     },
     {
       icon: <Info className="h-4 w-4" />,
-      label: "Información",
+      label: "Info",
       href: "/info",
     },
   ]
 
   return (
-    <div className="flex h-full w-full flex-col p-2">
-      {/* Header */}
-      <div className="mb-2 text-center">
-        <h1 className="text-xs font-bold">Más Opciones</h1>
+    <div className="flex h-full w-full flex-col items-center justify-center p-2 bg-gradient-to-b from-blue-900 to-purple-900">
+      {/* Minimalist header */}
+      <div className="absolute top-1 left-0 right-0 text-center">
+        <h1 className="text-xs font-bold">Más</h1>
       </div>
 
-      <div className="flex flex-1 flex-col gap-2">
+      {/* Simplified menu */}
+      <div className="flex flex-col gap-3 w-full">
         {menuItems.map((item) => (
-          <Link key={item.label} href={item.href} className="flex items-center gap-2 rounded-lg bg-emerald-900 p-2">
-            <div className="flex h-6 w-6 items-center justify-center rounded-full bg-emerald-800">{item.icon}</div>
+          <Link
+            key={item.label}
+            href={item.href}
+            className="flex items-center justify-center gap-2 rounded-lg bg-blue-800 py-2"
+          >
+            {item.icon}
             <span className="text-[10px]">{item.label}</span>
           </Link>
         ))}

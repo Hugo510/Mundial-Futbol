@@ -6,7 +6,6 @@ import { useState } from "react"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import WearableDashboard from "./wearable-dashboard"
 import WearableLiveResults from "./wearable-live-results"
-import WearableReservation from "./wearable-reservation"
 import WearableMore from "./wearable-more"
 import { cn } from "@/lib/utils"
 
@@ -18,11 +17,11 @@ export default function WearableLayout() {
   // Minimum swipe distance (in px)
   const minSwipeDistance = 50
 
+  // Removed the Reservation screen
   const screens = [
     { id: 0, component: <WearableDashboard />, name: "Dashboard" },
     { id: 1, component: <WearableLiveResults />, name: "En Vivo" },
-    { id: 2, component: <WearableReservation />, name: "Reservar" },
-    { id: 3, component: <WearableMore />, name: "Más" },
+    { id: 2, component: <WearableMore />, name: "Más" },
   ]
 
   const handleTouchStart = (e: React.TouchEvent) => {
@@ -89,40 +88,33 @@ export default function WearableLayout() {
           ))}
         </div>
 
-        {/* Navigation dots */}
+        {/* Simplified navigation dots */}
         <div className="absolute bottom-1 left-0 right-0 flex justify-center gap-1">
           {screens.map((screen) => (
             <div
               key={screen.id}
-              className={cn("h-1 w-1 rounded-full", currentScreen === screen.id ? "bg-amber-500" : "bg-gray-600")}
+              className={cn("h-1 w-1 rounded-full", currentScreen === screen.id ? "bg-pink-500" : "bg-gray-600")}
             />
           ))}
         </div>
 
-        {/* Navigation arrows */}
-        <button
-          onClick={goToPrevious}
-          disabled={currentScreen === 0}
-          className={cn(
-            "absolute left-1 top-1/2 -translate-y-1/2 rounded-full bg-black/50 p-1",
-            currentScreen === 0 ? "opacity-0" : "opacity-70",
-          )}
-        >
-          <ChevronLeft className="h-4 w-4" />
-          <span className="sr-only">Previous</span>
-        </button>
+        {/* Navigation arrows - only shown when needed */}
+        {currentScreen > 0 && (
+          <button
+            onClick={goToPrevious}
+            className="absolute left-1 top-1/2 -translate-y-1/2 rounded-full bg-black/30 p-1"
+          >
+            <ChevronLeft className="h-3 w-3" />
+            <span className="sr-only">Previous</span>
+          </button>
+        )}
 
-        <button
-          onClick={goToNext}
-          disabled={currentScreen === screens.length - 1}
-          className={cn(
-            "absolute right-1 top-1/2 -translate-y-1/2 rounded-full bg-black/50 p-1",
-            currentScreen === screens.length - 1 ? "opacity-0" : "opacity-70",
-          )}
-        >
-          <ChevronRight className="h-4 w-4" />
-          <span className="sr-only">Next</span>
-        </button>
+        {currentScreen < screens.length - 1 && (
+          <button onClick={goToNext} className="absolute right-1 top-1/2 -translate-y-1/2 rounded-full bg-black/30 p-1">
+            <ChevronRight className="h-3 w-3" />
+            <span className="sr-only">Next</span>
+          </button>
+        )}
       </div>
     </div>
   )
